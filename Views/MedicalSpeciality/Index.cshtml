@@ -4,26 +4,24 @@
   ViewBag.Title = "Especialidades Medicas";
 }
 
-<div class="text-center">
-  <table>
-    <thead>
-    <tr>
-      <th>
-        @* @Html.DisplayNameFor(model => model.Description) *@
-        Descripción
-      </th>
-    </tr>
-    </thead>
+<table>
+  <thead>
+  <tr>
+    <th>
+      @* @Html.DisplayNameFor(model => model.Description) *@
+      Descripción
+    </th>
+  </tr>
+  </thead>
 
-    <tbody>
-    @foreach (var item in Model)
-    {
-      <tr>
-        <td>
-          @Html.DisplayFor(modelItem => item.Description)
-        </td>
-      </tr>
-    }
-    </tbody>
-  </table>
-</div>
+  <tbody>
+  @foreach (var item in Model)
+  {
+    <tr>
+      <td>
+        @Html.DisplayFor(modelItem => item.Description)
+      </td>
+    </tr>
+  }
+  </tbody>
+</table>
