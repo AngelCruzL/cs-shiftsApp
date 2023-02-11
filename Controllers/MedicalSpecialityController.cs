@@ -1,15 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
+using shifts.Models;
 
 namespace shifts.Controllers;
 
 public class MedicalSpecialityController : Controller
 {
-  public MedicalSpecialityController()
+  private readonly ShiftsContext _context;
+
+  public MedicalSpecialityController(ShiftsContext context)
   {
+    _context = context;
   }
-  
+
   public IActionResult Index()
   {
-    return View();
+    return View(_context.MedicalSpecialities.ToList());
   }
 }

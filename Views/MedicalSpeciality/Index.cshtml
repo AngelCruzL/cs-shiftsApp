@@ -1,25 +1,29 @@
-@model dynamic
+@model IEnumerable<shifts.Models.MedicalSpeciality>
 
 @{
-  ViewBag.Title = "title";
-  Layout = "_Layout";
+  ViewBag.Title = "Especialidades Medicas";
 }
 
 <div class="text-center">
   <table>
     <thead>
     <tr>
-      <th>Descripción</th>
+      <th>
+        @* @Html.DisplayNameFor(model => model.Description) *@
+        Descripción
+      </th>
     </tr>
     </thead>
 
     <tbody>
-    <tr>
-      <td>Traumatologo</td>
-    </tr>
-    <tr>
-      <td>Cardiologo</td>
-    </tr>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.Description)
+        </td>
+      </tr>
+    }
     </tbody>
   </table>
 </div>
