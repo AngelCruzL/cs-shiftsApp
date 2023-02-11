@@ -1,0 +1,28 @@
+@model shifts.Models.MedicalSpeciality
+
+@{
+  ViewBag.Title = $"Editar {Model.Description}";
+}
+
+<h4>Especialidad</h4>
+
+<div>
+  <form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly"></div>
+    <input type="hidden" asp-for="Id">
+
+    <div>
+      <label asp-for="Description">Descripción</label>
+      <input type="text" asp-for="Description"/>
+      <span asp-validation-for="Description"></span>
+    </div>
+
+    <div>
+      <input type="submit" value="Guardar"/>
+    </div>
+  </form>
+</div>
+
+<div>
+  <a asp-action="Index">Volver</a>
+</div>
