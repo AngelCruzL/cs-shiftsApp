@@ -13,23 +13,23 @@ public class MedicalSpecialityController : Controller
     _context = context;
   }
 
-  public IActionResult Index()
+  public async Task<IActionResult> Index()
   {
-    return View(_context.MedicalSpecialities.ToList());
+    return View(await _context.MedicalSpecialities.ToListAsync());
   }
 
-  public IActionResult Edit(int? id)
+  public async Task<IActionResult> Edit(int? id)
   {
     if (id == null) return NotFound();
 
-    var medicalSpeciality = _context.MedicalSpecialities.Find(id);
+    var medicalSpeciality = await _context.MedicalSpecialities.FindAsync(id);
     if (medicalSpeciality == null) return NotFound();
 
     return View(medicalSpeciality);
   }
 
   [HttpPost]
-  public IActionResult Edit(int id, [Bind("Id, Description")] MedicalSpeciality medicalSpeciality)
+  public async Task<IActionResult> Edit(int id, [Bind("Id, Description")] MedicalSpeciality medicalSpeciality)
   {
     if (id != medicalSpeciality.Id) return NotFound();
 
@@ -38,7 +38,7 @@ public class MedicalSpecialityController : Controller
       try
       {
         _context.Update(medicalSpeciality);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
       }
       catch (DbUpdateConcurrencyException)
       {
@@ -51,22 +51,22 @@ public class MedicalSpecialityController : Controller
     return View(medicalSpeciality);
   }
 
-  public IActionResult Delete(int? id)
+  public async Task<IActionResult> Delete(int? id)
   {
     if (id == null) return NotFound();
 
-    var medicalSpeciality = _context.MedicalSpecialities.FirstOrDefault(s => s.Id == id);
+    var medicalSpeciality = await _context.MedicalSpecialities.FirstOrDefaultAsync(s => s.Id == id);
     if (medicalSpeciality == null) return NotFound();
 
     return View(medicalSpeciality);
   }
 
   [HttpPost, ActionName("Delete")]
-  public IActionResult Delete(int id)
+  public async Task<IActionResult> Delete(int id)
   {
-    var medicalSpeciality = _context.MedicalSpecialities.Find(id);
+    var medicalSpeciality = await _context.MedicalSpecialities.FindAsync(id);
     _context.MedicalSpecialities.Remove(medicalSpeciality);
-    _context.SaveChanges();
+    await _context.SaveChangesAsync();
 
     return RedirectToAction(nameof(Index));
   }
