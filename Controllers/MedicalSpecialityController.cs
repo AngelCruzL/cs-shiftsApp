@@ -70,4 +70,19 @@ public class MedicalSpecialityController : Controller
 
     return RedirectToAction(nameof(Index));
   }
+
+  public IActionResult Create()
+  {
+    return View();
+  }
+
+  [HttpPost]
+  public async Task<IActionResult> Create([Bind("Id, Description")] MedicalSpeciality medicalSpeciality)
+  {
+    if (!ModelState.IsValid) return View(medicalSpeciality);
+
+    _context.Add(medicalSpeciality);
+    await _context.SaveChangesAsync();
+    return RedirectToAction(nameof(Index));
+  }
 }
