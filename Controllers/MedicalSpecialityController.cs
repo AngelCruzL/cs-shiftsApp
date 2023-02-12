@@ -50,4 +50,24 @@ public class MedicalSpecialityController : Controller
 
     return View(medicalSpeciality);
   }
+
+  public IActionResult Delete(int? id)
+  {
+    if (id == null) return NotFound();
+
+    var medicalSpeciality = _context.MedicalSpecialities.FirstOrDefault(s => s.Id == id);
+    if (medicalSpeciality == null) return NotFound();
+
+    return View(medicalSpeciality);
+  }
+
+  [HttpPost, ActionName("Delete")]
+  public IActionResult Delete(int id)
+  {
+    var medicalSpeciality = _context.MedicalSpecialities.Find(id);
+    _context.MedicalSpecialities.Remove(medicalSpeciality);
+    _context.SaveChanges();
+
+    return RedirectToAction(nameof(Index));
+  }
 }
