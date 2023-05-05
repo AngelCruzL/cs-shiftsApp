@@ -38,14 +38,49 @@ public class PatientController : Controller
   [HttpPost]
   [ValidateAntiForgeryToken]
   public async Task<IActionResult> Create(
-    [Bind("Id,Name,LastName,Address,PhoneNumber,Email")]
-    Patient patient
+    [Bind("Id,Name,LastName,Address,PhoneNumber,Email")] Patient patient
   )
   {
     if (!ModelState.IsValid) return View(patient);
 
     _context.Add(patient);
     await _context.SaveChangesAsync();
+    return RedirectToAction(nameof(Index));
+  }
+  
+  public async Task<IActionResult> Edit(int? id)
+  {
+    if (id == null) return NotFound();
+
+    var patient = await _context.Patients.FindAsync(id);
+
+    if (patient == null) return NotFound();
+
+    return View(patient);
+  }
+  
+  [HttpPost]
+  [ValidateAntiForgeryToken]
+  public async Task<IActionResult> Edit(
+    int id,
+    [Bind("Id,Name,LastName,Address,PhoneNumber,Email")] Patient patient
+  )
+  {
+    if (id != patient.Id) return NotFound();
+
+    if (!ModelState.IsValid) return View(patient);
+
+    try
+    {
+      _context.Update(patient);
+      await _context.SaveChangesAsync();
+    }
+    catch (DbUpdateConcurrencyException)
+    {
+      if (!PatientExists(patient.Id)) return NotFound();
+      throw;
+    }
+
     return RedirectToAction(nameof(Index));
   }
 }
