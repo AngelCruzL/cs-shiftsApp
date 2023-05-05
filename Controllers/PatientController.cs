@@ -17,4 +17,16 @@ public class PatientController : Controller
   {
     return View(await _context.Patients.ToListAsync());
   }
+
+  public async Task<IActionResult> Details(int? id)
+  {
+    if (id == null) return NotFound();
+
+    var patient = await _context.Patients
+      .FirstOrDefaultAsync(p => p.Id == id);
+
+    if (patient == null) return NotFound();
+
+    return View(patient);
+  }
 }
