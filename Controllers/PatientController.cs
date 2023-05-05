@@ -29,4 +29,23 @@ public class PatientController : Controller
 
     return View(patient);
   }
+
+  public IActionResult Create()
+  {
+    return View();
+  }
+
+  [HttpPost]
+  [ValidateAntiForgeryToken]
+  public async Task<IActionResult> Create(
+    [Bind("Id,Name,LastName,Address,PhoneNumber,Email")]
+    Patient patient
+  )
+  {
+    if (!ModelState.IsValid) return View(patient);
+
+    _context.Add(patient);
+    await _context.SaveChangesAsync();
+    return RedirectToAction(nameof(Index));
+  }
 }
