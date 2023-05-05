@@ -1,0 +1,51 @@
+@model shifts.Models.Patient
+
+@{
+  ViewBag.Title = "Agregar nuevo paciente";
+}
+
+<h4>Paciente</h4>
+
+<div>
+  <form asp-action="Create">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div>
+      <label asp-for="Name">Nombre(s)</label>
+      <input type="text" asp-for="Name"/>
+      <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+      <label asp-for="LastName">Apellidos</label>
+      <input type="text" asp-for="LastName"/>
+      <span asp-validation-for="LastName"></span>
+    </div>
+
+    <div>
+      <label asp-for="Address">Dirección</label>
+      <input type="text" asp-for="Address"/>
+      <span asp-validation-for="Address"></span>
+    </div>
+
+    <div>
+      <label asp-for="PhoneNumber">Número Teléfonico</label>
+      <input type="text" asp-for="PhoneNumber"/>
+      <span asp-validation-for="PhoneNumber"></span>
+    </div>
+
+    <div>
+      <label asp-for="Email">Correo Electrónico</label>
+      <input type="email" asp-for="Email"/>
+      <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+      <input type="submit" value="Agregar Paciente"/>
+    </div>
+  </form>
+</div>
+
+<div>
+  <a asp-action="Index">Volver</a>
+</div>
