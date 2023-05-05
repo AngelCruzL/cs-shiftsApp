@@ -1,0 +1,59 @@
+@model IEnumerable<Patient>
+
+@{
+  ViewBag.Title = "Pacientes";
+}
+
+<p>
+  <a asp-action="Create">Agregar nuevo paciente</a>
+</p>
+
+<table>
+  <thead>
+  <tr>
+    <th>
+      @Html.DisplayNameFor(model => model.Name)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.LastName)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.Address)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.PhoneNumber)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.Email)
+    </th>
+  </tr>
+  </thead>
+
+  <tbody>
+  @foreach (var patient in Model)
+  {
+    <tr>
+      <td>
+        @Html.DisplayFor(modelItem => patient.Name)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => patient.LastName)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => patient.Address)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => patient.PhoneNumber)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => patient.Email)
+      </td>
+      <td>
+        <a asp-action="Edit" asp-route-id="@patient.Id">Editar</a>
+        <a asp-action="Details" asp-route-id="@patient.Id">Detalle</a>
+        <a asp-action="Delete" asp-route-id="@patient.Id">Eliminar</a>
+      </td>
+    </tr>
+  }
+  </tbody>
+</table>
