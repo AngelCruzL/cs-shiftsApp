@@ -38,7 +38,8 @@ public class PatientController : Controller
   [HttpPost]
   [ValidateAntiForgeryToken]
   public async Task<IActionResult> Create(
-    [Bind("Id,Name,LastName,Address,PhoneNumber,Email")] Patient patient
+    [Bind("Id,Name,LastName,Address,PhoneNumber,Email")]
+    Patient patient
   )
   {
     if (!ModelState.IsValid) return View(patient);
@@ -47,7 +48,7 @@ public class PatientController : Controller
     await _context.SaveChangesAsync();
     return RedirectToAction(nameof(Index));
   }
-  
+
   public async Task<IActionResult> Edit(int? id)
   {
     if (id == null) return NotFound();
@@ -58,12 +59,13 @@ public class PatientController : Controller
 
     return View(patient);
   }
-  
+
   [HttpPost]
   [ValidateAntiForgeryToken]
   public async Task<IActionResult> Edit(
     int id,
-    [Bind("Id,Name,LastName,Address,PhoneNumber,Email")] Patient patient
+    [Bind("Id,Name,LastName,Address,PhoneNumber,Email")]
+    Patient patient
   )
   {
     if (id != patient.Id) return NotFound();
@@ -82,5 +84,10 @@ public class PatientController : Controller
     }
 
     return RedirectToAction(nameof(Index));
+  }
+
+  private bool PatientExists(int patientId)
+  {
+    return _context.Patients.Any(p => p.Id == patientId);
   }
 }
