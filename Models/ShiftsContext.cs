@@ -5,7 +5,8 @@ namespace shifts.Models;
 public class ShiftsContext : DbContext
 
 {
-  public ShiftsContext(DbContextOptions<ShiftsContext> options) : base(options)
+  public ShiftsContext(DbContextOptions<ShiftsContext> options)
+    : base(options)
   {
   }
 
@@ -16,12 +17,19 @@ public class ShiftsContext : DbContext
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
-    modelBuilder.Entity<MedicalSpeciality>(s =>
+    modelBuilder.Entity<MedicalSpeciality>(entity =>
       {
-        s.ToTable("MedicalSpecialities");
-        s.HasKey(s => s.Id);
-        s.Property(s => s.Id).ValueGeneratedOnAdd();
-        s.Property(s => s.Description).IsRequired().HasMaxLength(200).IsUnicode(false);
+        entity.ToTable("MedicalSpecialities");
+
+        entity.HasKey(s => s.Id);
+
+        entity.Property(s => s.Id)
+          .ValueGeneratedOnAdd();
+
+        entity.Property(s => s.Description)
+          .IsRequired()
+          .HasMaxLength(200)
+          .IsUnicode(false);
       }
     );
 
