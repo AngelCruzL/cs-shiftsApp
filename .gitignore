@@ -477,3 +477,4 @@ $RECYCLE.BIN/
 *.lnk
 
 .idea/
+azure-sql-edge-data/
