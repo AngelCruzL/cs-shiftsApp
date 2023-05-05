@@ -90,4 +90,31 @@ public class PatientController : Controller
   {
     return _context.Patients.Any(p => p.Id == patientId);
   }
+
+  public async Task<IActionResult> Delete(int? id)
+  {
+    if (id == null) return NotFound();
+
+    var patient = await _context.Patients
+      .FirstOrDefaultAsync(p => p.Id == id);
+
+    if (patient == null) return NotFound();
+
+    return View(patient);
+  }
+
+  [HttpPost]
+  [ActionName("Delete")]
+  [ValidateAntiForgeryToken]
+  public async Task<IActionResult> DeleteConfirmed(int? id)
+  {
+    if (id == null) return NotFound();
+
+    var patient = await _context.Patients.FindAsync(id);
+    if (patient == null) return NotFound();
+
+    _context.Patients.Remove(patient);
+    await _context.SaveChangesAsync();
+    return RedirectToAction(nameof(Index));
+  }
 }
