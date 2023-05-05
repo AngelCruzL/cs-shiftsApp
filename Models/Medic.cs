@@ -10,6 +10,6 @@ public class Medic
   [Display(Name = "Dirección")] public string Address { get; set; }
   [Display(Name = "Número Teléfonico")] public string PhoneNumber { get; set; }
   [Display(Name = "Correo Electrónico")] public string Email { get; set; }
-  public DateTime ScheduleFrom { get; set; }
-  public DateTime ScheduleUntil { get; set; }
+  [Display(Name = "Hora de Inicio")] public DateTime ScheduleFrom { get; set; }
+  [Display(Name = "Hora de Salida")] public DateTime ScheduleUntil { get; set; }
 }

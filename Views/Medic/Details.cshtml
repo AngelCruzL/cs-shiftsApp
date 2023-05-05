@@ -1,69 +1,65 @@
-@model shifts.Models.Medic
+@model Medic
 
 @{
-    Layout = null;
+  ViewBag.Title = $"Detalles del médico {Model.Name} {Model.LastName}";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
+<h4>Médico</h4>
 
 <div>
-    <h4>Medic</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ScheduleFrom)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ScheduleFrom)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ScheduleUntil)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ScheduleUntil)
-        </dd>
-    </dl>
+  <dl >
+    <dt >
+      @Html.DisplayNameFor(model => model.Name)
+    </dt>
+    <dd >
+      @Html.DisplayFor(model => model.Name)
+    </dd>
+
+    <dt >
+      @Html.DisplayNameFor(model => model.LastName)
+    </dt>
+    <dd >
+      @Html.DisplayFor(model => model.LastName)
+    </dd>
+
+    <dt >
+      @Html.DisplayNameFor(model => model.Address)
+    </dt>
+    <dd >
+      @Html.DisplayFor(model => model.Address)
+    </dd>
+
+    <dt >
+      @Html.DisplayNameFor(model => model.PhoneNumber)
+    </dt>
+    <dd >
+      @Html.DisplayFor(model => model.PhoneNumber)
+    </dd>
+    <dt >
+
+      @Html.DisplayNameFor(model => model.Email)
+    </dt>
+    <dd >
+      @Html.DisplayFor(model => model.Email)
+    </dd>
+
+    <dt >
+      @Html.DisplayNameFor(model => model.ScheduleFrom)
+    </dt>
+    <dd >
+      @Html.DisplayFor(model => model.ScheduleFrom)
+    </dd>
+
+    <dt >
+      @Html.DisplayNameFor(model => model.ScheduleUntil)
+    </dt>
+    <dd >
+      @Html.DisplayFor(model => model.ScheduleUntil)
+    </dd>
+  </dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+  <a asp-action="Edit" asp-route-id="@Model.Id">Editar médico</a> |
+  <a asp-action="Index">Volver</a>
 </div>
-</body>
-</html>
