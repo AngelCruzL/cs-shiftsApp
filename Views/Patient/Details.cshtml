@@ -1,0 +1,51 @@
+@model Patient
+
+@{
+  ViewBag.Title = $"Detalles del paciente {Model.Name} {Model.LastName}";
+}
+
+<h4>Paciente</h4>
+
+<div>
+  <dl>
+    <dt>
+      @Html.DisplayNameFor(patient => patient.Name)
+    </dt>
+    <dd>
+      @Html.DisplayFor(patient => patient.Name)
+    </dd>
+
+    <dt>
+      @Html.DisplayNameFor(patient => patient.LastName)
+    </dt>
+    <dd>
+      @Html.DisplayFor(patient => patient.LastName)
+    </dd>
+
+    <dt>
+      @Html.DisplayNameFor(patient => patient.Address)
+    </dt>
+    <dd>
+      @Html.DisplayFor(patient => patient.Address)
+    </dd>
+
+    <dt>
+      @Html.DisplayNameFor(patient => patient.PhoneNumber)
+    </dt>
+    <dd>
+      @Html.DisplayFor(patient => patient.PhoneNumber)
+    </dd>
+
+    <dt>
+      @Html.DisplayNameFor(patient => patient.Email)
+    </dt>
+    <dd>
+      @Html.DisplayFor(patient => patient.Email)
+    </dd>
+  </dl>
+</div>
+
+<div>
+  <a asp-action="Edit" asp-route-id="@Model.Id">Editar paciente</a> |
+  <a asp-action="Index">Volver</a>
+</div>
