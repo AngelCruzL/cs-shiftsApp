@@ -63,5 +63,45 @@ public class ShiftsContext : DbContext
         .HasMaxLength(100)
         .IsUnicode(false);
     });
+
+    modelBuilder.Entity<Medic>(entity =>
+    {
+      entity.ToTable("Medic");
+
+      entity.HasKey(medic => medic.Id);
+
+      entity.Property(medic => medic.Name)
+        .IsRequired()
+        .HasMaxLength(50)
+        .IsUnicode(false);
+
+      entity.Property(medic => medic.LastName)
+        .IsRequired()
+        .HasMaxLength(50)
+        .IsUnicode(false);
+
+      entity.Property(medic => medic.Address)
+        .IsRequired()
+        .HasMaxLength(250)
+        .IsUnicode(false);
+
+      entity.Property(medic => medic.PhoneNumber)
+        .IsRequired()
+        .HasMaxLength(20)
+        .IsUnicode(false);
+
+      entity.Property(medic => medic.Email)
+        .IsRequired()
+        .HasMaxLength(100)
+        .IsUnicode(false);
+
+      entity.Property(medic => medic.ScheduleFrom)
+        .IsRequired()
+        .IsUnicode(false);
+
+      entity.Property(medic => medic.ScheduleUntil)
+        .IsRequired()
+        .IsUnicode(false);
+    });
   }
 }
