@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using shifts.Models;
 
@@ -10,9 +11,11 @@ using shifts.Models;
 namespace shifts.Migrations
 {
     [DbContext(typeof(ShiftsContext))]
-    partial class ShiftsContextModelSnapshot : ModelSnapshot
+    [Migration("20230505013527_PatientMigration")]
+    partial class PatientMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
