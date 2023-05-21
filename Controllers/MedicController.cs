@@ -153,6 +153,11 @@ public class MedicController : Controller
   {
     if (_context.Medic == null) return Problem("Entity set 'ShiftsContext.Medic'  is null.");
 
+    var medicMedicalSpeciality = await _context.MedicMedicalSpeciality
+      .FirstOrDefaultAsync(mms => mms.IdMedic == id);
+    _context.MedicMedicalSpeciality.Remove(medicMedicalSpeciality!);
+    await _context.SaveChangesAsync();
+
     var medic = await _context.Medic.FindAsync(id);
     if (medic != null) _context.Medic.Remove(medic);
 
