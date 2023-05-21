@@ -1,8 +1,92 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+  ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row u-mt-3">
+  <div class="col s12 m6 l4">
+    <div class="card">
+      <div class="card-image center orange">
+        <img src="img/tonometer.svg" alt="Imagen de un Tonometro">
+
+        <a
+          asp-controller="MedicalSpeciality"
+          asp-action="Create"
+          class="btn-floating halfway-fab waves-effect waves-light red">
+          <i class="material-icons">add</i>
+        </a>
+      </div>
+
+      <div class="card-content">
+        <span class="card-title">Especialidades Médicas:</span>
+        <p>Módulo para el manejo de las especialidades médicas</p>
+      </div>
+
+      <div class="card-action blue darken-3">
+        <a
+          asp-controller="MedicalSpeciality"
+          asp-action="Index"
+          class="white-text">
+          Ver más
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s12 m6 l4">
+    <div class="card">
+      <div class="card-image center blue">
+        <img src="img/doctor.svg" alt="Imagen de un doctor">
+
+        <a
+          asp-controller="Medic"
+          asp-action="Create"
+          class="btn-floating halfway-fab waves-effect waves-light red">
+          <i class="material-icons">add</i>
+        </a>
+      </div>
+
+      <div class="card-content">
+        <span class="card-title">Médicos:</span>
+        <p>Módulo para el manejo de los médicos</p>
+      </div>
+
+      <div class="card-action blue darken-3">
+        <a
+          asp-controller="Medic"
+          asp-action="Index"
+          class="white-text">
+          Ver más
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s12 m6 l4">
+    <div class="card">
+      <div class="card-image center green">
+        <img src="img/patient.svg" alt="Imagen de un paciente">
+
+        <a
+          asp-controller="Patient"
+          asp-action="Create"
+          class="btn-floating halfway-fab waves-effect waves-light red">
+          <i class="material-icons">add</i>
+        </a>
+      </div>
+
+      <div class="card-content">
+        <span class="card-title">Pacientes:</span>
+        <p>Módulo para el manejo de los pacientes</p>
+      </div>
+
+      <div class="card-action blue darken-3">
+        <a
+          asp-controller="Patient"
+          asp-action="Index"
+          class="white-text">
+          Ver más
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
