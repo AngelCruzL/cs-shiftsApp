@@ -54,7 +54,7 @@ public class MedicController : Controller
   public async Task<IActionResult> Create(
     [Bind("Id,Name,LastName,Address,PhoneNumber,Email,ScheduleFrom,ScheduleUntil")]
     Medic medic,
-    int IdMedicalSpeciality)
+    int idMedicalSpeciality)
   {
     if (!ModelState.IsValid) return View(medic);
 
@@ -64,7 +64,7 @@ public class MedicController : Controller
     var medicMedicalSpeciality = new MedicMedicalSpeciality
     {
       IdMedic = medic.Id,
-      IdMedicalSpeciality = IdMedicalSpeciality
+      IdMedicalSpeciality = idMedicalSpeciality
     };
 
     _context.Add(medicMedicalSpeciality);
@@ -78,8 +78,17 @@ public class MedicController : Controller
   {
     if (id == null || _context.Medic == null) return NotFound();
 
-    var medic = await _context.Medic.FindAsync(id);
+    var medic = await _context.Medic.Where(medic => medic.Id == id)
+      .Include(mme => mme.MedicMedicalSpecialities)
+      .FirstOrDefaultAsync();
     if (medic == null) return NotFound();
+
+    ViewData["MedicalSpecialities"] = new SelectList(
+      _context.MedicalSpecialities,
+      "Id",
+      "Description",
+      medic.MedicMedicalSpecialities![0].IdMedicalSpeciality
+    );
 
     return View(medic);
   }
@@ -91,28 +100,37 @@ public class MedicController : Controller
   [ValidateAntiForgeryToken]
   public async Task<IActionResult> Edit(int id,
     [Bind("Id,Name,LastName,Address,PhoneNumber,Email,ScheduleFrom,ScheduleUntil")]
-    Medic medic)
+    Medic medic,
+    int idMedicalSpeciality)
   {
     if (id != medic.Id) return NotFound();
 
-    if (ModelState.IsValid)
-    {
-      try
-      {
-        _context.Update(medic);
-        await _context.SaveChangesAsync();
-      }
-      catch (DbUpdateConcurrencyException)
-      {
-        if (!MedicExists(medic.Id))
-          return NotFound();
-        throw;
-      }
+    if (!ModelState.IsValid) return View(medic);
 
-      return RedirectToAction(nameof(Index));
+    try
+    {
+      _context.Update(medic);
+      await _context.SaveChangesAsync();
+
+      var medicMedicalSpeciality = await _context.MedicMedicalSpeciality
+        .FirstOrDefaultAsync(mms => mms.IdMedic == medic.Id);
+
+      _context.Remove(medicMedicalSpeciality!);
+      await _context.SaveChangesAsync();
+
+      medicMedicalSpeciality!.IdMedicalSpeciality = idMedicalSpeciality;
+
+      _context.Add(medicMedicalSpeciality);
+      await _context.SaveChangesAsync();
+    }
+    catch (DbUpdateConcurrencyException)
+    {
+      if (!MedicExists(medic.Id))
+        return NotFound();
+      throw;
     }
 
-    return View(medic);
+    return RedirectToAction(nameof(Index));
   }
 
   // GET: Medic/Delete/5

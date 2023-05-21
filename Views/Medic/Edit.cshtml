@@ -53,6 +53,15 @@
       <span asp-validation-for="ScheduleUntil"></span>
     </div>
 
+    <div>
+      <label for="idMedicalSpeciality">Especialidad Médica</label>
+      <select
+        id="idMedicalSpeciality"
+        asp-items="ViewBag.MedicalSpecialities"
+        name="idMedicalSpeciality">
+      </select>
+    </div>
+
     <div >
       <input type="submit" value="Guardar Cambios"/>
     </div>
