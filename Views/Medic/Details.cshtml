@@ -56,6 +56,13 @@
     <dd >
       @Html.DisplayFor(model => model.ScheduleUntil)
     </dd>
+
+    <dt >
+      @Html.DisplayNameFor(model => model.MedicMedicalSpecialities![0].MedicalSpeciality)
+    </dt>
+    <dd >
+      @Html.DisplayFor(model => model.MedicMedicalSpecialities![0].MedicalSpeciality.Description)
+    </dd>
   </dl>
 </div>
 

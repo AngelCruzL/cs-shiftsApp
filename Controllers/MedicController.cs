@@ -28,7 +28,9 @@ public class MedicController : Controller
     if (id == null || _context.Medic == null) return NotFound();
 
     var medic = await _context.Medic
-      .FirstOrDefaultAsync(m => m.Id == id);
+      .Where(m => m.Id == id).Include(mme => mme.MedicMedicalSpecialities!)
+      .ThenInclude(me => me.MedicalSpeciality).FirstOrDefaultAsync();
+
     if (medic == null) return NotFound();
 
     return View(medic);
