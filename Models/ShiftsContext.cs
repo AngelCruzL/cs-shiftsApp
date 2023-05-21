@@ -13,6 +13,7 @@ public class ShiftsContext : DbContext
   public DbSet<MedicalSpeciality> MedicalSpecialities { get; set; }
   public DbSet<Patient> Patients { get; set; }
   public DbSet<Medic> Medic { get; set; }
+  public DbSet<MedicMedicalSpeciality> MedicMedicalSpeciality { get; set; }
 
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -102,6 +103,21 @@ public class ShiftsContext : DbContext
       entity.Property(medic => medic.ScheduleUntil)
         .IsRequired()
         .IsUnicode(false);
+    });
+
+    modelBuilder.Entity<MedicMedicalSpeciality>(entity =>
+    {
+      entity.ToTable("MedicMedicalSpeciality");
+
+      entity.HasKey(mms => new { mms.IdMedic, mms.IdMedicalSpeciality });
+
+      entity.HasOne(mms => mms.Medic)
+        .WithMany(m => m.MedicMedicalSpecialities)
+        .HasForeignKey(mms => mms.IdMedic);
+
+      entity.HasOne(mms => mms.MedicalSpeciality)
+        .WithMany(ms => ms.MedicMedicalSpecialities)
+        .HasForeignKey(mms => mms.IdMedicalSpeciality);
     });
   }
 }
