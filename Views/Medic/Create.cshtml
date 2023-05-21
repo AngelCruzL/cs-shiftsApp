@@ -53,6 +53,15 @@
     </div>
 
     <div>
+      <label for="idMedicalSpeciality">Especialidad Médica</label>
+      <select
+        id="idMedicalSpeciality"
+        asp-items="ViewBag.MedicalSpecialities"
+        name="idMedicalSpeciality">
+      </select>
+    </div>
+
+    <div>
       <input type="submit" value="Agregar Médico"/>
     </div>
   </form>

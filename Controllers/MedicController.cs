@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using shifts.Models;
 
@@ -36,6 +37,12 @@ public class MedicController : Controller
   // GET: Medic/Create
   public IActionResult Create()
   {
+    ViewData["MedicalSpecialities"] = new SelectList(
+      _context.MedicalSpecialities,
+      "Id",
+      "Description"
+    );
+
     return View();
   }
 
@@ -46,16 +53,24 @@ public class MedicController : Controller
   [ValidateAntiForgeryToken]
   public async Task<IActionResult> Create(
     [Bind("Id,Name,LastName,Address,PhoneNumber,Email,ScheduleFrom,ScheduleUntil")]
-    Medic medic)
+    Medic medic,
+    int IdMedicalSpeciality)
   {
-    if (ModelState.IsValid)
-    {
-      _context.Add(medic);
-      await _context.SaveChangesAsync();
-      return RedirectToAction(nameof(Index));
-    }
+    if (!ModelState.IsValid) return View(medic);
 
-    return View(medic);
+    _context.Add(medic);
+    await _context.SaveChangesAsync();
+
+    var medicMedicalSpeciality = new MedicMedicalSpeciality
+    {
+      IdMedic = medic.Id,
+      IdMedicalSpeciality = IdMedicalSpeciality
+    };
+
+    _context.Add(medicMedicalSpeciality);
+    await _context.SaveChangesAsync();
+
+    return RedirectToAction(nameof(Index));
   }
 
   // GET: Medic/Edit/5

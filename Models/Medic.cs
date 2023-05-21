@@ -12,4 +12,5 @@ public class Medic
   [Display(Name = "Correo Electrónico")] public string Email { get; set; }
   [Display(Name = "Hora de Inicio")] public DateTime ScheduleFrom { get; set; }
   [Display(Name = "Hora de Salida")] public DateTime ScheduleUntil { get; set; }
+  public List<MedicMedicalSpeciality>? MedicMedicalSpecialities { get; set; }
 }
