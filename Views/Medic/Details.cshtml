@@ -4,69 +4,73 @@
   ViewBag.Title = $"Detalles del médico {Model.Name} {Model.LastName}";
 }
 
-<h4>Médico</h4>
+<h4>Detalles del Médico</h4>
+<hr>
 
-<div>
-  <dl >
-    <dt >
-      @Html.DisplayNameFor(model => model.Name)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.Name)
-    </dd>
+<div class="row">
+  <div class="col s12 m8 offset-m2">
+    <div class="card hoverable blue">
+      <h6 class="card-title u-pt-2 center-align white-text">
+        @Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.LastName)
+      </h6>
 
-    <dt >
-      @Html.DisplayNameFor(model => model.LastName)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.LastName)
-    </dd>
+      <div class="card-content white-text">
+        <p>
+          @Html.DisplayNameFor(model => model.Address):
+          <span>
+            @Html.DisplayFor(model => model.Address)
+          </span>
+        </p>
 
-    <dt >
-      @Html.DisplayNameFor(model => model.Address)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.Address)
-    </dd>
+        <p>
+          @Html.DisplayNameFor(model => model.PhoneNumber):
+          <span>
+            @Html.DisplayFor(model => model.PhoneNumber)
+          </span>
+        </p>
 
-    <dt >
-      @Html.DisplayNameFor(model => model.PhoneNumber)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.PhoneNumber)
-    </dd>
-    <dt >
+        <p>
+          @Html.DisplayNameFor(model => model.Email):
+          <span>
+            @Html.DisplayFor(model => model.Email)
+          </span>
+        </p>
 
-      @Html.DisplayNameFor(model => model.Email)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.Email)
-    </dd>
+        <p>
+          @Html.DisplayNameFor(model => model.ScheduleFrom):
+          <span>
+            @Html.DisplayFor(model => model.ScheduleFrom)
+          </span>
+        </p>
 
-    <dt >
-      @Html.DisplayNameFor(model => model.ScheduleFrom)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.ScheduleFrom)
-    </dd>
+        <p>
+          @Html.DisplayNameFor(model => model.ScheduleUntil):
+          <span>
+            @Html.DisplayFor(model => model.ScheduleUntil)
+          </span>
+        </p>
+      </div>
 
-    <dt >
-      @Html.DisplayNameFor(model => model.ScheduleUntil)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.ScheduleUntil)
-    </dd>
+      <div class="card-action blue-grey">
+        <a
+          asp-action="Edit"
+          asp-route-id="@Model.Id"
+          class="white-text valign-wrapper btn">
+          Editar médico
+          <i class="material-icons right">edit</i>
+        </a>
 
-    <dt >
-      @Html.DisplayNameFor(model => model.MedicMedicalSpecialities![0].MedicalSpeciality)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.MedicMedicalSpecialities![0].MedicalSpeciality.Description)
-    </dd>
-  </dl>
+        <a
+          asp-action="Index"
+          class="white-text valign-wrapper change-order">
+          <i class="material-icons">arrow_back</i>
+          Volver
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div>
-  <a asp-action="Edit" asp-route-id="@Model.Id">Editar médico</a> |
-  <a asp-action="Index">Volver</a>
+
 </div>
