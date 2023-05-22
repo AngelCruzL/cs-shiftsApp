@@ -4,48 +4,64 @@
   ViewBag.Title = "Agregar nuevo paciente";
 }
 
-<h4>Paciente</h4>
+<h4>Agregar Nuevo Paciente</h4>
 
-<div>
-  <form asp-action="Create">
+<div class="row">
+  <form class="col s12" asp-action="Create">
     <div asp-validation-summary="ModelOnly"></div>
 
-    <div>
-      <label asp-for="Name">Nombre(s)</label>
-      <input type="text" asp-for="Name"/>
-      <span asp-validation-for="Name"></span>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix">account_circle</i>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" type="text"/>
+        <span asp-validation-for="Name"></span>
+      </div>
+
+      <div class="input-field col s12 m6">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" type="text"/>
+        <span asp-validation-for="LastName"></span>
+      </div>
     </div>
 
-    <div>
-      <label asp-for="LastName">Apellidos</label>
-      <input type="text" asp-for="LastName"/>
-      <span asp-validation-for="LastName"></span>
-    </div>
-
-    <div>
-      <label asp-for="Address">Dirección</label>
-      <input type="text" asp-for="Address"/>
+    <div class="input-field">
+      <i class="material-icons prefix">home</i>
+      <label asp-for="Address"></label>
+      <input asp-for="Address"/>
       <span asp-validation-for="Address"></span>
     </div>
 
-    <div>
-      <label asp-for="PhoneNumber">Número Teléfonico</label>
-      <input type="text" asp-for="PhoneNumber"/>
-      <span asp-validation-for="PhoneNumber"></span>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix">phone</i>
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" type="tel"/>
+        <span asp-validation-for="PhoneNumber"></span>
+      </div>
+
+      <div class="input-field col s12 m6">
+        <i class="material-icons prefix">email</i>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" type="email"/>
+        <span asp-validation-for="Email"></span>
+      </div>
     </div>
 
-    <div>
-      <label asp-for="Email">Correo Electrónico</label>
-      <input type="email" asp-for="Email"/>
-      <span asp-validation-for="Email"></span>
-    </div>
+    <div class="page-navigation-links">
+      <div>
+        <button type="submit" class="waves-effect waves-light btn">
+          Agregar Médico
+          <i class="material-icons right">save</i>
+        </button>
+      </div>
 
-    <div>
-      <input type="submit" value="Agregar Paciente"/>
+      <div class="change-order">
+        <a asp-action="Index" class="waves-effect waves-light btn">
+          Volver
+          <i class="material-icons left">arrow_back</i>
+        </a>
+      </div>
     </div>
   </form>
-</div>
-
-<div>
-  <a asp-action="Index">Volver</a>
 </div>

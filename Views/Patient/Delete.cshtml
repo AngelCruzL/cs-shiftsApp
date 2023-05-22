@@ -4,52 +4,55 @@
   ViewBag.Title = "Eliminar Paciente";
 }
 
-<h3>¿Esta seguro de eliminar el siguiente registro?</h3>
+<h4>¿Esta seguro de eliminar el siguiente registro?</h4>
+<hr>
 
-<div>
-  <dl>
-    <dt>
-      @Html.DisplayNameFor(patient => patient.Name)
-    </dt>
-    <dd>
-      @Html.DisplayFor(patient => patient.Name)
-    </dd>
+<div class="row">
+  <div class="col s12 m8 offset-m2">
+    <div class="card hoverable blue">
+      <h6 class="card-title u-pt-2 center-align white-text">
+        @Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.LastName)
+      </h6>
 
-    <dt>
-      @Html.DisplayNameFor(patient => patient.LastName)
-    </dt>
-    <dd>
-      @Html.DisplayFor(patient => patient.LastName)
-    </dd>
+      <div class="card-content white-text">
+        <p>
+          @Html.DisplayNameFor(model => model.Address):
+          <span>
+            @Html.DisplayFor(model => model.Address)
+          </span>
+        </p>
 
-    <dt>
-      @Html.DisplayNameFor(patient => patient.Address)
-    </dt>
-    <dd>
-      @Html.DisplayFor(patient => patient.Address)
-    </dd>
+        <p>
+          @Html.DisplayNameFor(model => model.PhoneNumber):
+          <span>
+            @Html.DisplayFor(model => model.PhoneNumber)
+          </span>
+        </p>
 
-    <dt>
-      @Html.DisplayNameFor(patient => patient.PhoneNumber)
-    </dt>
-    <dd>
-      @Html.DisplayFor(patient => patient.PhoneNumber)
-    </dd>
+        <p>
+          @Html.DisplayNameFor(model => model.Email):
+          <span>
+            @Html.DisplayFor(model => model.Email)
+          </span>
+        </p>
+      </div>
 
-    <dt>
-      @Html.DisplayNameFor(patient => patient.Email)
-    </dt>
-    <dd>
-      @Html.DisplayFor(patient => patient.Email)
-    </dd>
-  </dl>
+      <div class="card-action blue-grey">
+        <form asp-action="Delete">
+          <input type="hidden" asp-for="Id"/>
+          <button type="submit" class="waves-effect waves-light btn red">
+            <i class="material-icons right">delete</i>
+            Eliminar Paciente
+          </button>
+        </form>
 
-  <form asp-action="Delete">
-    <input type="hidden" asp-for="Id">
-    <input type="submit" value="Eliminar"/>
-  </form>
-
-  <div>
-    <a asp-action="Index">Volver</a>
+        <div class="change-order">
+          <a class="white-text valign-wrapper" asp-action="Index">
+            <i class="material-icons">arrow_back</i>
+            Volver
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

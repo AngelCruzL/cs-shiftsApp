@@ -4,13 +4,13 @@
   ViewBag.Title = "Pacientes";
 }
 
-<p>
-  <a asp-action="Create">Agregar nuevo paciente</a>
+<p class="u-mt-3">
+  <a asp-action="Create">Agregar nuevo médico</a>
 </p>
 
-<table>
+<table class="u-mt-2 responsive-table highlight z-depth-1-half blue lighten-5 u-mb-3">
   <thead>
-  <tr>
+  <tr class="blue white-text">
     <th>
       @Html.DisplayNameFor(model => model.Name)
     </th>
@@ -26,6 +26,7 @@
     <th>
       @Html.DisplayNameFor(model => model.Email)
     </th>
+    <th></th>
   </tr>
   </thead>
 
@@ -49,9 +50,15 @@
         @Html.DisplayFor(modelItem => patient.Email)
       </td>
       <td>
-        <a asp-action="Edit" asp-route-id="@patient.Id">Editar</a>
-        <a asp-action="Details" asp-route-id="@patient.Id">Detalle</a>
-        <a asp-action="Delete" asp-route-id="@patient.Id">Eliminar</a>
+        <a asp-action="Edit" asp-route-id="@patient.Id" aria-label="Editar">
+          <i class="material-icons">edit</i>
+        </a>
+        <a asp-action="Details" asp-route-id="@patient.Id" aria-label="Detalle">
+          <i class="material-icons grey-text">more_vert</i>
+        </a>
+        <a asp-action="Delete" asp-route-id="@patient.Id" aria-label="Eliminar">
+          <i class="material-icons red-text">delete</i>
+        </a>
       </td>
     </tr>
   }

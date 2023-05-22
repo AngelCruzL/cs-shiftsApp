@@ -4,48 +4,55 @@
   ViewBag.Title = $"Detalles del paciente {Model.Name} {Model.LastName}";
 }
 
-<h4>Paciente</h4>
+<h4>Detalles del Paciente</h4>
+<hr>
 
-<div>
-  <dl>
-    <dt>
-      @Html.DisplayNameFor(patient => patient.Name)
-    </dt>
-    <dd>
-      @Html.DisplayFor(patient => patient.Name)
-    </dd>
+<div class="row">
+  <div class="col s12 m8 offset-m2">
+    <div class="card hoverable blue">
+      <h6 class="card-title u-pt-2 center-align white-text">
+        @Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.LastName)
+      </h6>
 
-    <dt>
-      @Html.DisplayNameFor(patient => patient.LastName)
-    </dt>
-    <dd>
-      @Html.DisplayFor(patient => patient.LastName)
-    </dd>
+      <div class="card-content white-text">
+        <p>
+          @Html.DisplayNameFor(model => model.Address):
+          <span>
+            @Html.DisplayFor(model => model.Address)
+          </span>
+        </p>
 
-    <dt>
-      @Html.DisplayNameFor(patient => patient.Address)
-    </dt>
-    <dd>
-      @Html.DisplayFor(patient => patient.Address)
-    </dd>
+        <p>
+          @Html.DisplayNameFor(model => model.PhoneNumber):
+          <span>
+            @Html.DisplayFor(model => model.PhoneNumber)
+          </span>
+        </p>
 
-    <dt>
-      @Html.DisplayNameFor(patient => patient.PhoneNumber)
-    </dt>
-    <dd>
-      @Html.DisplayFor(patient => patient.PhoneNumber)
-    </dd>
+        <p>
+          @Html.DisplayNameFor(model => model.Email):
+          <span>
+            @Html.DisplayFor(model => model.Email)
+          </span>
+        </p>
+      </div>
 
-    <dt>
-      @Html.DisplayNameFor(patient => patient.Email)
-    </dt>
-    <dd>
-      @Html.DisplayFor(patient => patient.Email)
-    </dd>
-  </dl>
-</div>
+      <div class="card-action blue-grey">
+        <a
+          asp-action="Edit"
+          asp-route-id="@Model.Id"
+          class="white-text valign-wrapper btn">
+          Editar paciente
+          <i class="material-icons right">edit</i>
+        </a>
 
-<div>
-  <a asp-action="Edit" asp-route-id="@Model.Id">Editar paciente</a> |
-  <a asp-action="Index">Volver</a>
+        <a
+          asp-action="Index"
+          class="white-text valign-wrapper change-order">
+          <i class="material-icons">arrow_back</i>
+          Volver
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
