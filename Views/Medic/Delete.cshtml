@@ -5,65 +5,68 @@
 }
 
 <h3>¿Esta seguro de eliminar el siguiente registro?</h3>
+<hr>
 
-<div>
-  <dl >
-    <dt >
-      @Html.DisplayNameFor(model => model.Name)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.Name)
-    </dd>
+<div class="row">
+  <div class="col s12 m8 offset-m2">
+    <div class="card hoverable blue">
+      <h6 class="card-title u-pt-2 center-align white-text">
+        @Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.LastName)
+      </h6>
 
-    <dt >
-      @Html.DisplayNameFor(model => model.LastName)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.LastName)
-    </dd>
+      <div class="card-content white-text">
+        <p>
+          @Html.DisplayNameFor(model => model.Address):
+          <span>
+            @Html.DisplayFor(model => model.Address)
+          </span>
+        </p>
 
-    <dt >
-      @Html.DisplayNameFor(model => model.Address)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.Address)
-    </dd>
+        <p>
+          @Html.DisplayNameFor(model => model.PhoneNumber):
+          <span>
+            @Html.DisplayFor(model => model.PhoneNumber)
+          </span>
+        </p>
 
-    <dt >
-      @Html.DisplayNameFor(model => model.PhoneNumber)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.PhoneNumber)
-    </dd>
+        <p>
+          @Html.DisplayNameFor(model => model.Email):
+          <span>
+            @Html.DisplayFor(model => model.Email)
+          </span>
+        </p>
 
-    <dt >
-      @Html.DisplayNameFor(model => model.Email)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.Email)
-    </dd>
+        <p>
+          @Html.DisplayNameFor(model => model.ScheduleFrom):
+          <span>
+            @Html.DisplayFor(model => model.ScheduleFrom)
+          </span>
+        </p>
 
-    <dt >
-      @Html.DisplayNameFor(model => model.ScheduleFrom)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.ScheduleFrom)
-    </dd>
+        <p>
+          @Html.DisplayNameFor(model => model.ScheduleUntil):
+          <span>
+            @Html.DisplayFor(model => model.ScheduleUntil)
+          </span>
+        </p>
+      </div>
 
-    <dt >
-      @Html.DisplayNameFor(model => model.ScheduleUntil)
-    </dt>
-    <dd >
-      @Html.DisplayFor(model => model.ScheduleUntil)
-    </dd>
-  </dl>
+      <div class="card-action blue-grey">
+        <form asp-action="Delete">
+          <input type="hidden" asp-for="Id"/>
+          <button type="submit" class="waves-effect waves-light btn red">
+            <i class="material-icons right">delete</i>
+            Eliminar Médico
+          </button>
+        </form>
 
-  <form asp-action="Delete">
-    <input type="hidden" asp-for="Id"/>
-    <input type="submit" value="Eliminar"/>
-  </form>
-
-  <div>
-    <a asp-action="Index">Volver</a>
+        <div class="change-order">
+          <a class="white-text valign-wrapper" asp-action="Index">
+            <i class="material-icons">arrow_back</i>
+            Volver
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
