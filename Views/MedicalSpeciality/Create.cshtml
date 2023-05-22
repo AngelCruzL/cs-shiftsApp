@@ -4,24 +4,34 @@
   ViewBag.Title = "Crear Especialidad Médica";
 }
 
-<h4>Especialidad</h4>
+<h4>Agregar Nueva Especialidad Médica</h4>
 
-<div>
-  <form asp-action="Create">
+<div class="row">
+  <form class="col s12" asp-action="Create">
     <div asp-validation-summary="ModelOnly"></div>
 
-    <div>
-      <label asp-for="Description">Descripción</label>
-      <input type="text" asp-for="Description"/>
-      <span asp-validation-for="Description"></span>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <label asp-for="Description">Descripción</label>
+        <input type="text" asp-for="Description"/>
+        <span asp-validation-for="Description"></span>
+      </div>
     </div>
 
-    <div>
-      <input type="submit" value="Guardar"/>
+    <div class="page-navigation-links">
+      <div>
+        <button type="submit" class="waves-effect waves-light btn">
+          Agregar Especialidad
+          <i class="material-icons right">save</i>
+        </button>
+      </div>
+
+      <div class="change-order">
+        <a asp-action="Index" class="waves-effect waves-light btn">
+          Volver
+          <i class="material-icons left">arrow_back</i>
+        </a>
+      </div>
     </div>
   </form>
-</div>
-
-<div>
-  <a asp-action="Index">Volver</a>
 </div>

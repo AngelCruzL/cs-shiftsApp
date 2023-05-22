@@ -45,6 +45,14 @@ body {
   margin-block-end: 3rem;
 }
 
+.u-pb-2 {
+  padding-block-end: 2rem;
+}
+
+.u-pb-3 {
+  padding-block-end: 3rem;
+}
+
 .brand-text {
   margin-inline-start: 1rem;
   font-size: 1.5rem;

@@ -1,28 +1,35 @@
-@model shifts.Models.MedicalSpeciality
+@model MedicalSpeciality
 
 @{
   ViewBag.Title = "Eliminación de Especialidad Médica";
 }
 
-<h3>¿Esta seguro de eliminar el siguiente registro?</h3>
+<h4>¿Esta seguro de eliminar la siguiente especialidad?</h4>
+<hr>
 
-<div>
-  <dl>
-    <dt>
-      @* @Html.DisplayNameFor(model => model.Description) *@
-      Descripción
-    </dt>
-    <dd>
-      @Html.DisplayFor(model => model.Description)
-    </dd>
-  </dl>
+<div class="row">
+  <div class="col s12 m8 offset-m2">
+    <div class="card hoverable orange">
+      <h6 class="card-title u-pt-2 center-align white-text u-pb-2">
+        @Html.DisplayFor(model => model.Description)
+      </h6>
 
-  <form asp-action="Delete">
-    <input type="hidden" asp-for="Id">
-    <input type="submit" value="Eliminar"/>
-  </form>
+      <div class="card-action blue-grey">
+        <form asp-action="Delete">
+          <input type="hidden" asp-for="Id"/>
+          <button type="submit" class="waves-effect waves-light btn red">
+            <i class="material-icons right">delete</i>
+            Eliminar Especialidad
+          </button>
+        </form>
 
-  <div>
-    <a asp-action="Index">Volver</a>
+        <div class="change-order">
+          <a class="white-text valign-wrapper" asp-action="Index">
+            <i class="material-icons">arrow_back</i>
+            Volver
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,19 +1,20 @@
-@model IEnumerable<shifts.Models.MedicalSpeciality>
+@model IEnumerable<MedicalSpeciality>
 
 @{
   ViewBag.Title = "Especialidades Medicas";
 }
 
-<p>
+<p class="u-mt-3">
   <a asp-action="Create">Crear especialidad</a>
 </p>
 
-<table>
+<table class="u-mt-2 responsive-table highlight z-depth-1-half orange lighten-4 u-mb-3">
   <thead>
-  <tr>
+  <tr class="orange white-text">
     <th>
       @Html.DisplayNameFor(model => model.Description)
     </th>
+    <th></th>
   </tr>
   </thead>
 
@@ -25,8 +26,12 @@
         @Html.DisplayFor(modelItem => item.Description)
       </td>
       <td>
-        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-        <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+        <a asp-action="Edit" asp-route-id="@item.Id" aria-label="Editar">
+          <i class="material-icons">edit</i>
+        </a>
+        <a asp-action="Delete" asp-route-id="@item.Id" aria-label="Eliminar">
+          <i class="material-icons red-text">delete</i>
+        </a>
       </td>
     </tr>
   }
