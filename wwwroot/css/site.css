@@ -1,79 +1,75 @@
 html {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 @media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
+  html {
+    font-size: 16px;
+  }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-    margin-bottom: 60px;
+  margin-bottom: 60px;
 }
 
 .u-mt-1 {
-    margin-block-start: 1rem;
+  margin-block-start: 1rem;
 }
 
 .u-mt-2 {
-    margin-block-start: 2rem;
+  margin-block-start: 2rem;
 }
 
 .u-mt-3 {
-    margin-block-start: 3rem;
+  margin-block-start: 3rem;
 }
 
 .u-pt-2 {
-    padding-block-start: 2rem;
+  padding-block-start: 2rem;
 }
 
 .u-pt-3 {
-    padding-block-start: 3rem;
+  padding-block-start: 3rem;
 }
 
 .u-mb-3 {
-    margin-block-end: 3rem;
+  margin-block-end: 3rem;
 }
 
 .brand-text {
-    margin-inline-start: 1rem;
-    font-size: 1.5rem;
+  margin-inline-start: 1rem;
+  font-size: 1.5rem;
 }
 
 .card p {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .card p span {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 .card-action {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .page-navigation-links {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
 }
 
 .change-order {
-    order: -1;
-}
-
-#mobile-demo {
-    display: none;
+  order: -1;
 }
