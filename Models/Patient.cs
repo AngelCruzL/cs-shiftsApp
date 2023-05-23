@@ -12,4 +12,5 @@ public class Patient
   [Display(Name = "Dirección")] public string Address { get; set; }
   [Display(Name = "Número Teléfonico")] public string PhoneNumber { get; set; }
   [Display(Name = "Correo Electrónico")] public string Email { get; set; }
+  public List<MedicalShift> MedicalShifts { get; set; }
 }

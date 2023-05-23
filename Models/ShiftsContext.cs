@@ -14,25 +14,25 @@ public class ShiftsContext : DbContext
   public DbSet<Patient> Patients { get; set; }
   public DbSet<Medic> Medic { get; set; }
   public DbSet<MedicMedicalSpeciality> MedicMedicalSpeciality { get; set; }
+  public DbSet<MedicalShift> MedicalShift { get; set; }
 
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
     modelBuilder.Entity<MedicalSpeciality>(entity =>
-      {
-        entity.ToTable("MedicalSpecialities");
+    {
+      entity.ToTable("MedicalSpecialities");
 
-        entity.HasKey(s => s.Id);
+      entity.HasKey(s => s.Id);
 
-        entity.Property(s => s.Id)
-          .ValueGeneratedOnAdd();
+      entity.Property(s => s.Id)
+        .ValueGeneratedOnAdd();
 
-        entity.Property(s => s.Description)
-          .IsRequired()
-          .HasMaxLength(200)
-          .IsUnicode(false);
-      }
-    );
+      entity.Property(s => s.Description)
+        .IsRequired()
+        .HasMaxLength(200)
+        .IsUnicode(false);
+    });
 
     modelBuilder.Entity<Patient>(entity =>
     {
@@ -119,5 +119,36 @@ public class ShiftsContext : DbContext
         .WithMany(ms => ms.MedicMedicalSpecialities)
         .HasForeignKey(mms => mms.IdMedicalSpeciality);
     });
+
+    modelBuilder.Entity<MedicalShift>(entity =>
+    {
+      entity.ToTable("MedicalShift");
+
+      entity.HasKey(ms => ms.Id);
+
+      entity.Property(ms => ms.IdPatient)
+        .IsRequired()
+        .IsUnicode(false);
+
+      entity.Property(ms => ms.IdMedic)
+        .IsRequired()
+        .IsUnicode(false);
+
+      entity.Property(ms => ms.ScheduleFrom)
+        .IsRequired()
+        .IsUnicode(false);
+
+      entity.Property(ms => ms.ScheduleUntil)
+        .IsRequired()
+        .IsUnicode(false);
+    });
+
+    modelBuilder.Entity<MedicalShift>().HasOne(ms => ms.Patient)
+      .WithMany(ms => ms.MedicalShifts)
+      .HasForeignKey(ms => ms.IdPatient);
+
+    modelBuilder.Entity<MedicalShift>().HasOne(ms => ms.Medic)
+      .WithMany(ms => ms.MedicalShifts)
+      .HasForeignKey(ms => ms.IdMedic);
   }
 }

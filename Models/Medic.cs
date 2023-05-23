@@ -39,4 +39,5 @@ public class Medic
   public DateTime ScheduleUntil { get; set; }
 
   public List<MedicMedicalSpeciality>? MedicMedicalSpecialities { get; set; }
+  public List<MedicalShift> MedicalShifts { get; set; }
 }
