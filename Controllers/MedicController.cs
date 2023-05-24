@@ -171,4 +171,16 @@ public class MedicController : Controller
   {
     return (_context.Medic?.Any(e => e.Id == id)).GetValueOrDefault();
   }
+
+  public string GetScheduleFrom(int id)
+  {
+    var medic = _context.Medic.Find(id);
+    return medic!.ScheduleFrom.ToString("HH:mm");
+  }
+
+  public string GetScheduleUntil(int id)
+  {
+    var medic = _context.Medic.Find(id);
+    return medic!.ScheduleUntil.ToString("HH:mm");
+  }
 }
