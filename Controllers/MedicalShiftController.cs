@@ -29,4 +29,55 @@ public class MedicalShiftController : Controller
     );
     return View();
   }
+
+  public JsonResult GetMedicalShifts(int idMedic)
+  {
+    var medicalShifts = new List<MedicalShift>();
+    medicalShifts = _shiftsContext.MedicalShift.Where(ms => ms.IdMedic == idMedic).ToList();
+
+    return Json(medicalShifts);
+  }
+
+  [HttpPost]
+  public JsonResult CreateMedicalShift(MedicalShift medicalShift)
+  {
+    var ok = false;
+
+    try
+    {
+      _shiftsContext.MedicalShift.Add(medicalShift);
+      _shiftsContext.SaveChanges();
+      ok = true;
+    }
+    catch (Exception e)
+    {
+      Console.WriteLine($"Exception found: {e}");
+      throw;
+    }
+
+    var jsonResult = new JsonResult(new { ok });
+    return jsonResult;
+  }
+
+  [HttpPost]
+  public JsonResult DeleteMedicalShift(int id)
+  {
+    var ok = false;
+
+    try
+    {
+      var medicalShift = _shiftsContext.MedicalShift.Find(id);
+      if (medicalShift != null) _shiftsContext.MedicalShift.Remove(medicalShift);
+      _shiftsContext.SaveChanges();
+      ok = true;
+    }
+    catch (Exception e)
+    {
+      Console.WriteLine($"Exception found: {e}");
+      throw;
+    }
+
+    var jsonResult = new JsonResult(new { ok });
+    return jsonResult;
+  }
 }
